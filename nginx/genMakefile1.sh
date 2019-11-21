@@ -38,9 +38,7 @@ else
         echo "load test mode" 
 fi
 ./configure \
-        --with-http_ssl_module \
         --with-pcre=../third-parity/pcre-8.43 \
-        --with-openssl=../third-parity/openssl-1.1.1d \
         --with-zlib=../third-parity/zlib-1.2.11 \
 	--add-module=../http-api-modules \
         --with-cc-opt="${_CCOPT} -Wno-unused-result" \
