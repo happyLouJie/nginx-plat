@@ -1,11 +1,12 @@
 ngx_addon_name=ngx_http_mytest_module
 HTTP_API_SRCS="
-    $ngx_addon_dir/api-test/ngx_http_mytest_module.c
+    $ngx_addon_dir/api-test/ngx_http_mytest_module.c \
+    $ngx_addon_dir/api-test/ngx_http_mytests_module.c
 "
 
 if test -n "$ngx_module_link"; then
     ngx_module_type=HTTP
-    ngx_module_name="$ngx_addon_name"
+    ngx_module_name="$ngx_addon_name ngx_http_mytests_module"
     ngx_module_incs=
     ngx_module_deps=
     ngx_module_srcs="$HTTP_API_SRCS"
@@ -13,6 +14,6 @@ if test -n "$ngx_module_link"; then
 
     . auto/module
 else
-    HTTP_MODULES="$HTTP_MODULES $ngx_addon_name"
-    NGX_ADDON_SRCS="$NGX_ADDON_SRCS $HTTP_REDIS_SRCS"
+    HTTP_MODULES="$HTTP_MODULES $ngx_addon_name ngx_http_mytests_module"
+    NGX_ADDON_SRCS="$NGX_ADDON_SRCS $HTTP_API_SRCS"
 fi
